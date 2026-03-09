@@ -1,6 +1,24 @@
 import request from '@/utils/request';
 import { AxiosPromise } from 'axios';
-import { BizFileShareVO } from './types';
+import { BizFileShareVO, ShareExtractVO } from './types';
+
+/**
+ * 校验并提取分享信息（免登录）
+ * @param shareLink 短链接
+ * @param extractCode 提取码（需要时必填）
+ */
+export function extractShare(shareLink: string, extractCode?: string): AxiosPromise<ShareExtractVO> {
+  const params: Record<string, string> = { shareLink };
+  if (extractCode) {
+    params.extractCode = extractCode;
+  }
+  return request({
+    url: '/secure/share/extract',
+    method: 'post',
+    params,
+    headers: { isToken: false }
+  });
+}
 
 /**
  * 创建分享

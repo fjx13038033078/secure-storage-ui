@@ -237,8 +237,10 @@ async function submitShare() {
 
 /** 构建完整分享链接（前端访问地址） */
 function buildShareLink(shortLink: string): string {
-  const base = window.location.origin + (import.meta.env.VITE_APP_CONTEXT_PATH || '');
-  return `${base}/share?link=${encodeURIComponent(shortLink)}`;
+  const ctx = (import.meta.env.VITE_APP_CONTEXT_PATH || '/').replace(/\/+$/, '');
+  const base = window.location.origin + (ctx || '');
+  const path = base.endsWith('/') ? 'share' : '/share';
+  return `${base}${path}?link=${encodeURIComponent(shortLink)}`;
 }
 
 /** 复制到剪贴板 */

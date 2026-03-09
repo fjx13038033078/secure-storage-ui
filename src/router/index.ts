@@ -48,6 +48,13 @@ export const constantRoutes: RouteRecordRaw[] = [
     hidden: true
   },
   {
+    path: '/share',
+    component: () => import('@/views/secure/share/Share.vue'),
+    name: 'Share',
+    hidden: true,
+    meta: { title: '分享文件', noCache: true }
+  },
+  {
     path: '/register',
     component: () => import('@/views/register.vue'),
     hidden: true
