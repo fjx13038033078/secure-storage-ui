@@ -8,6 +8,33 @@ import { globalHeaders } from '@/utils/request';
 const baseURL = import.meta.env.VITE_APP_BASE_API;
 let downloadLoadingInstance: LoadingInstance;
 export default {
+  async secureFile(fileId: string | number) {
+    const url = baseURL + '/secure/file/download/' + fileId;
+    downloadLoadingInstance = ElLoading.service({ text: '正在下载数据，请稍候', background: 'rgba(0, 0, 0, 0.7)' });
+    try {
+      const res = await axios({
+        method: 'get',
+        url: url,
+        responseType: 'blob',
+        headers: globalHeaders()
+      });
+      const isBlob = blobValidate(res.data);
+      if (isBlob) {
+        const blob = new Blob([res.data], { type: 'application/octet-stream' });
+        const filename = res.headers['download-filename']
+          ? decodeURIComponent(res.headers['download-filename'] as string)
+          : 'download';
+        FileSaver.saveAs(blob, filename);
+      } else {
+        this.printErrMsg(res.data);
+      }
+      downloadLoadingInstance.close();
+    } catch (r) {
+      console.error(r);
+      ElMessage.error('下载文件出现错误，请联系管理员！');
+      downloadLoadingInstance.close();
+    }
+  },
   async oss(ossId: string | number) {
     const url = baseURL + '/resource/oss/download/' + ossId;
     downloadLoadingInstance = ElLoading.service({ text: '正在下载数据，请稍候', background: 'rgba(0, 0, 0, 0.7)' });
