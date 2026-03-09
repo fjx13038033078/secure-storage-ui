@@ -100,7 +100,7 @@
             <el-table-column v-if="columns[0].visible" key="userId" label="用户编号" align="center" prop="userId" />
             <el-table-column v-if="columns[1].visible" key="userName" label="用户名称" align="center" prop="userName" :show-overflow-tooltip="true" />
             <el-table-column v-if="columns[2].visible" key="nickName" label="用户昵称" align="center" prop="nickName" :show-overflow-tooltip="true" />
-            <el-table-column v-if="columns[3].visible" key="deptName" label="部门" align="center" prop="deptName" :show-overflow-tooltip="true" />
+<!--            <el-table-column v-if="columns[3].visible" key="deptName" label="部门" align="center" prop="deptName" :show-overflow-tooltip="true" />-->
             <el-table-column v-if="columns[4].visible" key="phonenumber" label="手机号码" align="center" prop="phonenumber" width="120" />
             <el-table-column v-if="columns[5].visible" key="status" label="状态" align="center">
               <template #default="scope">
@@ -154,19 +154,19 @@
               <el-input v-model="form.nickName" placeholder="请输入用户昵称" maxlength="30" />
             </el-form-item>
           </el-col>
-          <el-col :span="12" v-if="form.userId == null || form.userId != useUserStore().userId">
-            <el-form-item label="归属部门" prop="deptId">
-              <el-tree-select
-                v-model="form.deptId"
-                :data="enabledDeptOptions"
-                :props="{ value: 'id', label: 'label', children: 'children' } as any"
-                value-key="id"
-                placeholder="请选择归属部门"
-                check-strictly
-                @change="handleDeptChange"
-              />
-            </el-form-item>
-          </el-col>
+<!--          <el-col :span="12" v-if="form.userId == null || form.userId != useUserStore().userId">-->
+<!--            <el-form-item label="归属部门" prop="deptId">-->
+<!--              <el-tree-select-->
+<!--                v-model="form.deptId"-->
+<!--                :data="enabledDeptOptions"-->
+<!--                :props="{ value: 'id', label: 'label', children: 'children' } as any"-->
+<!--                value-key="id"-->
+<!--                placeholder="请选择归属部门"-->
+<!--                check-strictly-->
+<!--                @change="handleDeptChange"-->
+<!--              />-->
+<!--            </el-form-item>-->
+<!--          </el-col>-->
         </el-row>
         <el-row>
           <el-col :span="12">

@@ -25,10 +25,10 @@
                 <svg-icon icon-class="email" />用户邮箱
                 <div class="pull-right">{{ state.user.email }}</div>
               </li>
-              <li class="list-group-item">
-                <svg-icon icon-class="tree" />所属部门
-                <div v-if="state.user.deptName" class="pull-right">{{ state.user.deptName }} / {{ state.postGroup }}</div>
-              </li>
+<!--              <li class="list-group-item">-->
+<!--                <svg-icon icon-class="tree" />所属部门-->
+<!--                <div v-if="state.user.deptName" class="pull-right">{{ state.user.deptName }} / {{ state.postGroup }}</div>-->
+<!--              </li>-->
               <li class="list-group-item">
                 <svg-icon icon-class="peoples" />所属角色
                 <div class="pull-right">{{ state.roleGroup }}</div>
@@ -55,12 +55,12 @@
             <el-tab-pane label="修改密码" name="resetPwd">
               <resetPwd />
             </el-tab-pane>
-            <el-tab-pane label="第三方应用" name="thirdParty">
-              <thirdParty :auths="state.auths" />
-            </el-tab-pane>
-            <el-tab-pane label="在线设备" name="onlineDevice">
-              <onlineDevice :devices="state.devices" />
-            </el-tab-pane>
+<!--            <el-tab-pane label="第三方应用" name="thirdParty">-->
+<!--              <thirdParty :auths="state.auths" />-->
+<!--            </el-tab-pane>-->
+<!--            <el-tab-pane label="在线设备" name="onlineDevice">-->
+<!--              <onlineDevice :devices="state.devices" />-->
+<!--            </el-tab-pane>-->
           </el-tabs>
         </el-card>
       </el-col>
