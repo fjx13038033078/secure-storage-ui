@@ -96,20 +96,6 @@ export const constantRoutes: RouteRecordRaw[] = [
       }
     ]
   },
-  {
-    path: '/secure',
-    component: Layout,
-    redirect: '/secure/userFile',
-    meta: { title: '安全存储', icon: 'lock' },
-    children: [
-      {
-        path: 'userFile',
-        component: () => import('@/views/secure/userFile/UserFile.vue'),
-        name: 'UserFile',
-        meta: { title: '我的文件', icon: 'list' }
-      }
-    ]
-  }
 ];
 
 // 动态路由，基于用户权限动态去加载
